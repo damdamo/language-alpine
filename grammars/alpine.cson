@@ -1,0 +1,104 @@
+scopeName: 'source.alpine' # <scope> should be a short, unique indicator for the language ("js", "php", "c", etc.)
+name: 'alpine' # The title that will show up in grammar selection and on your status bar.
+fileTypes: [ # An array of file extensions.
+  'alpine'
+  'alp'
+]
+
+patterns: [ # An array of individual pattern declarations.
+  {
+    comment: 'This is a comment'
+    name: 'comment.line.double-slash.alpine'
+    match: '//.*$'
+  },
+  {
+    name: 'comment.block.alpine'
+    begin: '/\\*'
+    beginCaptures:
+      0:
+        name: 'punctuation.definition.comment.begin.alpine'
+    end: '\\*/'
+    endCaptures:
+      0:
+        name: 'punctuation.definition.comment.end.alpine'
+  },
+  {
+    comment: 'Highlight func'
+    match: '\\b(func)\\s+(\\w+)?'
+    captures:
+      1:
+        name: 'storage.type.function.alpine'
+      2:
+        name: 'entity.name.function.alpine'
+  },
+  {
+    comment: 'Highlight type'
+    match: '\\b(type)\\s+(\\w+)?'
+    captures:
+      1:
+        name: 'storage.type.function.alpine'
+      2:
+        name: 'entity.name.type.alpine'
+  },
+  {
+    comment: 'Hightlight generator'
+    name: 'entity.name.tag.alpine'
+    match: '#\\w+'
+  },
+  {
+    comment: 'Hightlight conditionnal operator'
+    name: 'keyword.control.conditional.alpine'
+    match: '\\b(if|then|else|match|with)\\b'
+  },
+  {
+    comment: 'Keywords that denote logical expressions'
+    name: 'keyword.operator.logical.alpine'
+    match: '\\b(and|or|not)\\b'
+  },
+  {
+    comment: 'Support type of Alpine'
+    name: 'support.type.alpine'
+    match: '\\b(Bool|Int|Float)\\b'
+  },
+  {
+    comment: 'Declaration of a let'
+    match: '\\blet\\s+(\\w+)'
+    captures:
+      1:
+        name: 'storage.type.reassignability.alpine'
+      2:
+        name: 'entity.name.variable.alpine'
+  },
+  {
+    comment: 'Identifiers that denote language constants'
+    name: 'constant.language.alpine'
+    match: '\\b(true|false)\\b'
+  },
+  {
+    comment: 'My Type'
+    match: '(->)\\s*(\\w+)'
+    captures:
+      1:
+        name: 'keyword.other.alpine'
+      2:
+        name: 'entity.name.type.alpine'
+  },
+  {
+    name: 'keyword.other.alpine'
+    match: '\\B(->|::)\\B'
+  },
+  {
+    comment: 'We give a type after :'
+    match: '(\\w+)\\s*:\\s*(\\w+)'
+    captures:
+      2:
+        name: 'entity.name.type.alpine'
+  },
+  {
+    comment: 'Type begin with a capital'
+    name: 'entity.name.type.alpine'
+    match: '\\b[A-Z]\\w+\\b'
+  }
+
+
+]
